@@ -21,13 +21,14 @@ app.get("/player", (req, res) => {
   });
 });
 
+// get per id
 app.get("/player/:id_player", (req, res) => {
   const id_player = req.params.id_player;
-  const sql = `SELECT * FROM player where id_player = ${id_player}`;
-  db.query(sql, (err, result) => {
-    console.log(result);
+  const sql = "CALL select_player(2);";
+  db.query(sql, (err, fields) => {
+    if (err) throw err;
+    response(200, fields, "get satu satu", res);
   });
-  response(200, `data nih by id ${id_player}`, "get detail mahasiswa", res);
 });
 
 app.post("/player/post", (req, res) => {
@@ -51,6 +52,16 @@ app.get("/agent", (req, res) => {
     //hasil data dari mysql
     response(200, result, "ambil semua data agent", res);
     // console.log(result);
+  });
+});
+
+// get per id
+app.get("/agent/:id_agent", (req, res) => {
+  const id_agent = req.params.id_agent;
+  const sql = "CALL select_agent(4);";
+  db.query(sql, (err, fields) => {
+    if (err) throw err;
+    response(200, fields, "get satu satu", res);
   });
 });
 
@@ -78,6 +89,16 @@ app.get("/status", (req, res) => {
   });
 });
 
+// get per id
+app.get("/status/:id_status", (req, res) => {
+  const id_status = req.params.id_status;
+  const sql = "CALL select_status(4);";
+  db.query(sql, (err, fields) => {
+    if (err) throw err;
+    response(200, fields, "get satu satu", res);
+  });
+});
+
 app.post("/status/post", (req, res) => {
   res.send("INI POSTING");
 });
@@ -99,6 +120,16 @@ app.get("/map", (req, res) => {
     //hasil data dari mysql
     response(200, result, "ambil semua data map", res);
     // console.log(result);
+  });
+});
+
+// get per id
+app.get("/map/:id_map", (req, res) => {
+  const id_map = req.params.id_map;
+  const sql = "CALL select_map(2);";
+  db.query(sql, (err, fields) => {
+    console.log(fields);
+    response(200, fields, "get satu satu", res);
   });
 });
 
@@ -126,6 +157,16 @@ app.get("/pertandingan", (req, res) => {
   });
 });
 
+// get per id
+app.get("/pertandingan/:id_pertandingan", (req, res) => {
+  const id_pertandingan = req.params.id_pertandingan;
+  const sql = "CALL select_pertandingan(2);";
+  db.query(sql, (err, fields) => {
+    console.log(fields);
+    response(200, fields, "get satu satu", res);
+  });
+});
+
 app.post("/pertandingan/post", (req, res) => {
   res.send("INI POSTING");
 });
@@ -147,6 +188,16 @@ app.get("/historypertandingan", (req, res) => {
     //hasil data dari mysql
     response(200, result, "ambil semua data history pertandingan", res);
     // console.log(result);
+  });
+});
+
+// get per id
+app.get("/player/:id_player", (req, res) => {
+  const id_player = req.params.id_player;
+  const sql = "CALL select_player(2);";
+  db.query(sql, (err, fields) => {
+    console.log(fields);
+    response(200, fields, "get satu satu", res);
   });
 });
 
